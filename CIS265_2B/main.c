@@ -8,7 +8,7 @@
 * form:
 *   Enter phone number: CALLATT
 *   2255288
-* (In case you don’t have a telephone nearby, here are the letters on the 
+* (In case you donâ€™t have a telephone nearby, here are the letters on the 
 * keys: 2=ABC, 3=DEF, 4=GHI, 5=JKL, 6=MNO, 7=PRS, 8=TUV, 9=WXY.) If the 
 * original phone number contains nonalphabetic characters (digits or 
 * punctuation, for example), leave then unchanged:
@@ -51,14 +51,14 @@ char toNumber(char c) {
 
 // Program starts here.
 int main(void) {
-	char s[MAX_PHONE_NUMBER_STRING_LENGTH]; // Holds input phone number.
 	int attempts = MAX_INPUT_ATTEMPTS;      // Input attempt counter.
-
 	// Attempts must be valid non-zero, positive number.
 	assert(attempts > 0);
 
 	// Attempt only so many inputs.
 	while (attempts--) {
+		char s[MAX_PHONE_NUMBER_STRING_LENGTH]; // Holds input phone number.
+												
 		// Prompt and grab user input.
 		fputs("Enter phone number: ", stdout);
 		if (!fgets(s, MAX_PHONE_NUMBER_STRING_LENGTH - 2, stdin)) {
@@ -72,14 +72,9 @@ int main(void) {
 			fputs("Too many characters input.\n", stdout);
 		}
 		else {
-			// Catch special case of no input.
-			if (strlen(s) > 1) {
-				// Convert and display.
-				for (unsigned int i = 0; i < strlen(s); i++)
-					printf("%c", toNumber(s[i]));
-				break;
-			}
+			// Convert and display.
+			for (unsigned int i = 0; i < strlen(s); printf("%c", toNumber(s[i++])));
+			break;
 		}
 	}
 }
-
